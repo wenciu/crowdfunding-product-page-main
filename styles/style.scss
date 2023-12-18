@@ -23,18 +23,23 @@ body {
 }
 
 .nav-section {
-  position: fixed;
+//   position: fixed;
+width: 100vw;
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
 
   ul {
-    display: flex;
-    flex-direction: row;
-  }
+    // position: absolute;
+    // display: flex;
+    
+    
+
 
   li {
     margin: 10px;
     background-color: yellow;
+    list-style: none;
   }
 
   .logo {
@@ -102,6 +107,12 @@ body {
   border-radius: 8px;
   padding: 10px;
   margin-top: 20px;
+
+  .columns-container {
+    display: flex;
+    flex-direction: row;
+    // flex-wrap: wrap;
+  }
 }
 
 // <!-- ABOUT SECTION -->

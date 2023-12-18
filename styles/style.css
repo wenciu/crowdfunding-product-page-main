@@ -14,11 +14,15 @@ body {
   display: flex;
   flex-direction: row; }
   .nav-section ul {
+    position: absolute;
     display: flex;
-    flex-direction: row; }
+    flex-direction: row;
+    justify-content: end;
+    align-items: end; }
   .nav-section li {
     margin: 10px;
-    background-color: yellow; }
+    background-color: yellow;
+    list-style: none; }
   .nav-section .logo {
     background-image: url(/images/logo.svg);
     background-repeat: no-repeat;
@@ -65,6 +69,9 @@ body {
   border-radius: 8px;
   padding: 10px;
   margin-top: 20px; }
+  .funds-container .columns-container {
+    display: flex;
+    flex-direction: row; }
 
 .main-container {
   display: flex;
