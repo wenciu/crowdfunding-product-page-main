@@ -1,0 +1,80 @@
+@import url("https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;700&display=swap");
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0; }
+
+body {
+  height: 100vh;
+  font-family: "Commissioner", sans-serif;
+  background-color: fafafa; }
+
+.nav-section {
+  position: fixed;
+  display: flex;
+  flex-direction: row; }
+  .nav-section ul {
+    display: flex;
+    flex-direction: row; }
+  .nav-section li {
+    margin: 10px;
+    background-color: yellow; }
+  .nav-section .logo {
+    background-image: url(/images/logo.svg);
+    background-repeat: no-repeat;
+    height: 20px;
+    width: 150px;
+    background-color: black; }
+
+.hero-img {
+  background-size: cover;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-image: url(/images/image-hero-desktop.jpg); }
+
+.top-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  background-color: aqua;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: -50px; }
+  .top-container .top-img {
+    position: absolute;
+    top: -20px;
+    height: 40px;
+    width: 40px;
+    background-image: url(/images/logo-mastercraft.svg);
+    background-size: cover; }
+
+.funds-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  background-color: yellow;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 20px; }
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  background-color: yellow;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 8px;
+  padding: 10px;
+  margin-top: 20px; }
