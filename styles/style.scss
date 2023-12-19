@@ -6,6 +6,7 @@ $moderate-cyan: hsl(176, 50%, 47%);
 $dark-cyan: hsl(176, 72%, 28%);
 $black: hsl(0, 0%, 0%);
 $dark-gray: hsl(0, 0%, 48%);
+$border: hsl(0, 0%, 94%);
 
 * {
   box-sizing: border-box;
@@ -23,23 +24,21 @@ body {
 }
 
 .nav-section {
-//   position: fixed;
-width: 100vw;
+  //   position: fixed;
+  width: 100vw;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
   ul {
-    // position: absolute;
-    // display: flex;
-    
-    
+    position: absolute;
+    display: flex;
 
-
-  li {
-    margin: 10px;
-    background-color: yellow;
-    list-style: none;
+    li {
+      margin: 10px;
+      background-color: yellow;
+      list-style: none;
+    }
   }
 
   .logo {
@@ -68,10 +67,11 @@ width: 100vw;
   justify-content: center;
   align-items: center;
   width: 50vw;
-  background-color: aqua;
+  background-color: white;
   margin-left: auto;
   margin-right: auto;
   border-radius: 8px;
+  border: 1px solid $border;
   padding: 10px;
   margin-top: -50px;
 
@@ -84,14 +84,52 @@ width: 100vw;
     background-size: cover;
   }
 
-  .top-heading {
+  h3 {
+    font-size: 1.4rem;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  p {
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    button {
+      border-style: none;
+      border-radius: 15px;
+      font-size: 0.75rem;
+      width: 130px;
+      height: 30px;
+    }
+    .back-btn {
+      background-color: $dark-cyan;
+      color: white;
+      margin-left: 15px;
+    }
+    .book-btn {
+      width: 130px;
+      height: 30px;
+      background-color: $moderate-cyan;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-image: url(/images/icon-bookmark.svg);
+      color: $black;
+      text-align: center;
+      margin-right: 15px;
+      border-radius: 15px;
+    }
   }
 }
-// margin: 0;
-// display: flex;
-// justify-content: center;
-// align-items: center;
-// height: 100vh;
 
 // <!-- FUNDS SECTION -->
 
@@ -101,7 +139,8 @@ width: 100vw;
   justify-content: center;
   align-items: center;
   width: 50vw;
-  background-color: yellow;
+  background-color: white;
+  border: 1px solid $border;
   margin-left: auto;
   margin-right: auto;
   border-radius: 8px;
@@ -109,9 +148,35 @@ width: 100vw;
   margin-top: 20px;
 
   .columns-container {
+    width: 90%;
     display: flex;
-    flex-direction: row;
-    // flex-wrap: wrap;
+
+    .column {
+      text-align: center;
+      margin: 2px;
+      flex: 1;
+    }
+
+    .middle {
+      border-left: 1px solid $border;
+      border-right: 1px solid $border;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+    }
+
+    p {
+      color: $dark-cyan;
+      font-size: 0.75rem;
+    }
+  }
+  .progress-bar {
+    width: 90%;
+    background-color: aqua;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
 }
 
@@ -123,10 +188,169 @@ width: 100vw;
   justify-content: center;
   align-items: center;
   width: 50vw;
-  background-color: yellow;
+  background-color: white;
+  border: 1px solid $border;
   margin-left: auto;
   margin-right: auto;
   border-radius: 8px;
   padding: 10px;
   margin-top: 20px;
+
+  h4 {
+  }
+
+  .reward {
+    border: 1px solid $border;
+    border-radius: 8px;
+    margin: 15px;
+
+    .reward-top {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .reward-bottom {
+      display: flex;
+      justify-content: space-between;
+
+      button {
+        width: 80px;
+        height: 30px;
+        color: white;
+        font-size: 0.7rem;
+        background-color: $moderate-cyan;
+        border: none;
+        border-radius: 15px;
+      }
+    }
+  }
+}
+
+// <!-- MODAL CONTAINER -->
+
+.modal-container {
+  background-color: white;
+  border: 1px solid $border;
+  border-radius: 8px;
+  width: 50vw;
+
+  .header-container {
+    margin: 15px;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      margin: 15px;
+    }
+  }
+  .card {
+    border-radius: 8px;
+    border: 1px solid $border;
+
+    padding: 20px;
+    margin: 15px;
+
+    .top {
+      display: flex;
+
+      .left {
+        margin-left: 10px;
+        font-size: 0.8rem;
+        background-color: yellow;
+      }
+      .right {
+        margin-left: 70px;
+        font-size: 0.8rem;
+        background-color: red;
+      }
+    }
+
+    p {
+      margin: 20px;
+      line-height: 1.6;
+      padding-top: 15px;
+      padding-bottom: 20px;
+      font-size: 0.8rem;
+    }
+  }
+}
+.bottom {
+  display: flex;
+  width: 90%;
+  justify-content: space-evenly;
+  align-self: center;
+  background-color: white;
+  border: 1px solid $border;
+  border-radius: 8px;
+  margin-top: -15px;
+  border-top: 1px solid $moderate-cyan;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  input {
+    text-align: center;
+    width: 60px;
+    height: 30px;
+    background-color: transparent;
+    border: 1px solid $moderate-cyan;
+    border-radius: 15px;
+    font-size: 0.7rem;
+  }
+
+  button {
+    width: 80px;
+    height: 30px;
+    color: white;
+    font-size: 0.7rem;
+    background-color: $moderate-cyan;
+    border: none;
+    border-radius: 15px;
+  }
+}
+
+// <!-- SUCCESS MODAL -->
+
+.success-modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border: 1px solid $border;
+  border-radius: 8px;
+  width: 50vw;
+
+  .icon {
+    height: 60px;
+    width: 60px;
+    background-size: cover;
+    margin: 30px;
+
+    // background-repeat: no-repeat;
+    background-image: url(/images/icon-check.svg);
+  }
+
+  h4 {
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 25px;
+  }
+
+  p {
+    line-height: 1.5;
+    margin-left: 25px;
+    margin-right: 25px;
+    text-align: center;
+  }
+
+  button {
+    font-size: 1rem;
+    width: 110px;
+    border-radius: 25px;
+    border: none;
+    margin: 30px;
+    padding: 15px;
+    color: white;
+    background-color: $moderate-cyan;
+  }
 }
