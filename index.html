@@ -35,7 +35,7 @@
 
       <div class="btn-container">
         <button class="back-btn">Back this project</button>
-        <div class="book-btn">Bookmark</div>
+        <button class="book-btn">Bookmark</button>
       </div>
     </div>
 
@@ -91,7 +91,7 @@
             <div class="reward-bottom">
               <h4>101</h4>
               <span>left</span>
-              <button>Select Reward</button>
+              <button class="reward-btn">Select Reward</button>
             </div>
           </div>
           <!-- SECOND -->
@@ -108,7 +108,7 @@
             <div class="reward-bottom">
               <h4>64</h4>
               <span>left</span>
-              <button>Select Reward</button>
+              <button class="reward-btn">Select Reward</button>
             </div>
           </div>
           <!-- THIRD -->
@@ -125,7 +125,7 @@
             <div class="reward-bottom">
               <h4>0</h4>
               <span>left</span>
-              <button>Out of Stock</button>
+              <button disabled>Out of Stock</button>
             </div>
           </div>
         </div>
@@ -133,6 +133,7 @@
     </div>
 
     <!-- Selection modal start -->
+    <div class="modal-overlay">
     <div class="modal-container">
       <div class="header-container">
         <div class="header">
@@ -144,14 +145,15 @@
           the world?
         </p>
       </div>
+    
 
       <!-- First Card -->
       <div class="card">
         <div class="top">
-          <input type="radio" />
+          <input type="radio" name="radio" data-target="no-reward"/>
           <h4>Pledge with no reward</h4>
         </div>
-        <p>
+        <p class="description">
           Choose to support us without a reward if you simply believe in our
           project. As a backer, you will be signed up to receive product updates
           via email.
@@ -160,37 +162,37 @@
       <!-- Second Card -->
       <div class="card">
         <div class="top">
-          <input type="radio" />
+          <input type="radio" name="radio" data-target="bamboo-stand" />
           <h4 class="left">Bamboo Stand<span>Pledge $25 or more</span></h4>
-
           <h4 class="right">101 <span>left</span></h4>
         </div>
-        <p>
+        <p class="description">
           You get an ergonomic stand made of natural bamboo. You've helped us
           launch our promotional campaign, and you'll be added to a special
           Backer member list.
         </p>
+        <div class="bottom-hidden" id="bamboo-stand">
+          <p class="pledge">Enter your pledge</p>
+          <input type="number" value="25" min="25" placeholder="$25" />
+          <button>Continue</button>
+        </div>
       </div>
-      <div class="bottom">
-        <p>Enter your pledge</p>
-        <input type="number" placeholder="$25" />
-        <button>Continue</button>
-      </div>
+
       <!-- Third Card -->
       <div class="card">
         <div class="top">
-          <input type="radio" />
+          <input type="radio" name="radio" data-target="black-stand"/>
           <h4 class="left">
             Black Edition Stand<span>Pledge $75 or more</span>
           </h4>
 
           <h4 class="right">64<span>left</span></h4>
         </div>
-        <p>
+        <p class="description">
           You get a Black Special Edition computer stand and a personal thank
           you. You'll be added to our Backer member list. Shipping is included.
         </p>
-        <div class="bottom">
+        <div class="bottom-hidden" id="black-stand">
           <p>Enter your pledge</p>
           <input type="number" placeholder="$75" />
           <button>Continue</button>
@@ -199,25 +201,26 @@
       <!-- Fourth Card (Inactive) -->
       <div class="card">
         <div class="top">
-          <input type="radio" />
+          <input type="radio" name="radio" data-target="mahogany-special" disabled/>
           <h4 class="left">
             Mahogany Special Edition<span>Pledge $200 or more</span>
           </h4>
 
           <h4 class="right">0<span>left</span></h4>
         </div>
-        <p>
+        <p class="description">
           You get two Special Edition Mahogany stands, a Backer T-Shirt, and a
           personal thank you. You'll be added to our Backer member list.
           Shipping is included.
         </p>
-        <div class="bottom">
+        <div class="bottom-hidden" id="mahogany-special">
           <p>Enter your pledge</p>
           <input type="number" placeholder="$200" />
           <button>Continue</button>
         </div>
       </div>
     </div>
+  </div>
 
     <!-- Success modal start -->
     <div class="success-modal-container">
@@ -229,10 +232,12 @@
         Monitor Riser worldwide. You will get an email once our campaign is
         completed.
       </p>
-      <button>Got it!</button>
+      <button class="gotIt-btn">Got it!</button>
     </div>
     <!-- Success modal end -->
 
     <script src="js/index.js"></script>
+    </body>
+</html>
   </body>
 </html>
