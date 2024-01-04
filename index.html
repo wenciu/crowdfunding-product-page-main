@@ -43,7 +43,7 @@
     <div class="funds-container">
       <div class="columns-container">
         <div class="column">
-          <h3>$89,914</h3>
+          <h3 class="total-value">$89,914</h3>
           <p>of $100,000 backed</p>
         </div>
         <div class="column middle">
@@ -89,7 +89,7 @@
               special Backer member list.
             </p>
             <div class="reward-bottom">
-              <h4>101</h4>
+              <h4 class="left-1">101</h4>
               <span>left</span>
               <button class="reward-btn">Select Reward</button>
             </div>
@@ -106,7 +106,7 @@
               included.
             </p>
             <div class="reward-bottom">
-              <h4>64</h4>
+              <h4 class="left-2-2">64</h4>
               <span>left</span>
               <button class="reward-btn">Select Reward</button>
             </div>
@@ -164,7 +164,7 @@
         <div class="top">
           <input type="radio" name="radio" data-target="bamboo-stand" />
           <h4 class="left">Bamboo Stand<span>Pledge $25 or more</span></h4>
-          <h4 class="right">101 <span>left</span></h4>
+          <h4 class="right left-1-1"> 101<span>left</span></h4>
         </div>
         <p class="description">
           You get an ergonomic stand made of natural bamboo. You've helped us
@@ -173,8 +173,8 @@
         </p>
         <div class="bottom-hidden" id="bamboo-stand">
           <p class="pledge">Enter your pledge</p>
-          <input type="number" value="25" min="25" placeholder="$25" />
-          <button>Continue</button>
+          <input class="input-field-1" type="number" placeholder="$25" />
+          <button class="continue" data-counter="value1">Continue</button>
         </div>
       </div>
 
@@ -186,7 +186,7 @@
             Black Edition Stand<span>Pledge $75 or more</span>
           </h4>
 
-          <h4 class="right">64<span>left</span></h4>
+          <h4 class="right left-2">64<span>left</span></h4>
         </div>
         <p class="description">
           You get a Black Special Edition computer stand and a personal thank
@@ -194,8 +194,8 @@
         </p>
         <div class="bottom-hidden" id="black-stand">
           <p>Enter your pledge</p>
-          <input type="number" placeholder="$75" />
-          <button>Continue</button>
+          <input type="number" placeholder="$75" class="input-field-2"/>
+          <button class="continue" data-counter="value2">Continue</button>
         </div>
       </div>
       <!-- Fourth Card (Inactive) -->
@@ -216,7 +216,7 @@
         <div class="bottom-hidden" id="mahogany-special">
           <p>Enter your pledge</p>
           <input type="number" placeholder="$200" />
-          <button>Continue</button>
+          <button class="continue">Continue</button>
         </div>
       </div>
     </div>
