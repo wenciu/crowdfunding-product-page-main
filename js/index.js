@@ -131,8 +131,8 @@ continueBtn.forEach(function (btn) {
     const selectedCounter = btn.getAttribute("data-counter");
 
     // Get values from the input fields
-    const value1 = parseInt(inputField1.value);
-    const value2 = parseInt(inputField2.value);
+    const value1 = parseInt(inputField1.value) || 25;
+    const value2 = parseInt(inputField2.value) || 75;
 
     const minValue1 = 25; // minimum value for inputField1
     const minValue2 = 75; // minimum value for inputField2
