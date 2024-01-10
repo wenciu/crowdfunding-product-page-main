@@ -18,15 +18,25 @@ const overlay = document.querySelector(".modal-overlay");
 // MODAL CONTAINER
 const modal = document.querySelector(".modal-container");
 
-// HIDE MODAL ON PAGE LOAD
+// SUCCESS MODAL CONTAINER
+const successModal = document.querySelector(".success-modal-container");
+
+// GOT IT BTN (Thanks Container)
+const gotItBtn = document.querySelector(".gotIt-btn");
+
+// MODAL CLOSE BTN
+const closeBtn = document.querySelector(".close-btn");
+
+// HIDE DONATE MODAL CONTAINER ON PAGE LOAD
 
 window.onload = function () {
   modal.style.display = "none";
   overlay.style.display = "none";
+  successModal.style.display = "none";
 };
 
-// MODAL CLOSE BTN
-const closeBtn = document.querySelector(".close-btn");
+//------ BOOKMARK BUTTON FUNCTIONALITY ------//
+// bookBtn.innerHTML = "Bookmark";
 
 bookBtn.addEventListener("click", () => {
   if (bookBtn.innerHTML === "Bookmark") {
@@ -42,13 +52,31 @@ bookBtn.addEventListener("click", () => {
   }
 });
 
-//---------------------------------------//
-// RADIO BUTTONS-HIDDEN DIVS FUNCTIONALITY
+//------ PROGRESS BAR FUNCTIONALITY ------//
+// function updateProgressBar() {
+//   var inputValue = document.getElementById('inputValue').value;
+
+//   // Convert the input to a number
+//   var numericValue = parseFloat(inputValue);
+
+//   // Ensure the input is within the valid range (0-100)
+//   numericValue = Math.min(100, Math.max(0, numericValue));
+
+//   // Update the progress bar width and text
+//   var progressBar = document.getElementById('progress-bar');
+//   var progressText = document.getElementById('progress-text');
+
+//   progressBar.style.width = numericValue + '%';
+//   progressText.innerText = numericValue + '%';
+// }
+
+//------ RADIO BUTTONS-HIDDEN DIVS FUNCTIONALITY ------//
 
 // HIDDEN DIVS
 const hiddenDivs = document.querySelectorAll(".bottom-hidden");
 // CARDS CONTAINERS
 const cards = document.querySelectorAll(".card");
+let currentSelectedCard = null;
 
 cards.forEach(function (card) {
   const radioBtns = card.querySelectorAll('input[name="radio"]');
@@ -59,6 +87,17 @@ cards.forEach(function (card) {
       // Get the target div ID from the data-target attribute
       const targetDivId = this.getAttribute("data-target");
 
+      // Card container of the selected radio button
+      const selectedCard = radioBtn.closest(".card");
+      // Function to toggle border style
+
+      function toggleBorderStyle() {
+        if (currentSelectedCard) {
+          currentSelectedCard.style.border = "none"; // Toggle back to original border style
+        }
+        selectedCard.style.border = "2px solid hsl(0, 0%, 48%)"; // Set the new border style
+        currentSelectedCard = selectedCard; // Update the current selected card
+      }
       // Hide divs with if IDs do not match
       hiddenDivs.forEach(function (div) {
         div.style.display = "none";
@@ -68,24 +107,21 @@ cards.forEach(function (card) {
       const targetDiv = document.getElementById(targetDivId);
       if (targetDiv) {
         targetDiv.style.display = "flex";
-        card.style.borderStyle = "5px solid dotted";
+        toggleBorderStyle();
       }
     });
   });
 });
-//---------------------------------------//
 
-// SUCCESS MODAL CONTAINER
-const successModal = document.querySelector(".success-modal-container");
-
-// GOT IT BTN
-const gotItBtn = document.querySelector(".gotIt-btn");
-
-// OPEN 'BACK THIS PROJECT' MODAL
+//------ OPEN 'BACK THIS PROJECT' MODAL FUNCTIONALITY ------//
 
 backBtn.addEventListener("click", () => {
   modal.style.display = "block";
   overlay.style.display = "block";
+  setTimeout(function () {
+    overlay.style.opacity = "1";
+    modal.style.opacity = "1";
+  }, 50);
 });
 
 rewardBtn.forEach(function (btn) {
@@ -99,10 +135,19 @@ rewardBtn.forEach(function (btn) {
 closeBtn.addEventListener("click", () => {
   modal.style.display = "none";
   overlay.style.display = "none";
+  setTimeout(function () {
+    overlay.style.opacity = "0";
+    modal.style.opacity = "0";
+  }, 50);
 });
 
 gotItBtn.addEventListener("click", () => {
   successModal.style.display = "none";
+  overlay.style.display = "none";
+  setTimeout(function () {
+    successModal.style.opacity = "0";
+    overlay.style.opacity = "0";
+  }, 50);
 });
 
 // DONATE PROJECT
@@ -137,7 +182,7 @@ continueBtn.forEach(function (btn) {
     const minValue1 = 25; // minimum value for inputField1
     const minValue2 = 75; // minimum value for inputField2
 
-    // Check if input values are empty or less than a unique minimum value
+    // Check if input values are empty or less than a minimum value
     if (
       isNaN(value1) ||
       isNaN(value2) ||
@@ -167,6 +212,7 @@ continueBtn.forEach(function (btn) {
         itemsLeft1 -= 1;
         itemsLeftElement1.textContent = itemsLeft1;
         itemsLeftElement11.textContent = itemsLeft1;
+        closeModalDelay();
       } else {
         alert("No items left!");
       }
@@ -176,9 +222,19 @@ continueBtn.forEach(function (btn) {
         itemsLeft2 -= 1;
         itemsLeftElement2.textContent = itemsLeft2;
         itemsLeftElement22.textContent = itemsLeft2;
+        closeModalDelay();
       } else {
         alert("No items left!");
       }
+    }
+
+    // Function to hide the element after a specified delay
+
+    function closeModalDelay() {
+      setTimeout(function () {
+        modal.style.display = "none";
+        successModal.style.display = "flex";
+      }, 500);
     }
   });
 });
