@@ -9,6 +9,7 @@ $dark-gray: hsl(0, 0%, 48%);
 $border: hsl(0, 0%, 94%);
 
 $mobile-breakpoint: 375px;
+$tablet-breakpoint: 768px;
 $desktop-breakpoint: 1440px;
 
 * {
@@ -316,6 +317,7 @@ body {
 }
 
 // <!-- MODAL -->
+
 .modal-container {
   margin: 5% auto;
   background-color: white;
@@ -324,6 +326,12 @@ body {
   width: 70%;
   transition: opacity 0.5s ease;
   opacity: 1;
+
+  .selected {
+    border: 2px solid hsl(0, 0%, 48%);
+  }
+
+  // !important
 
   .header-container {
     margin: 15px;
@@ -347,7 +355,6 @@ body {
 
   .card {
     border-radius: 8px;
-    // border: 3px solid yellow;
     border: 1px solid $border;
     margin: 25px;
 
@@ -379,10 +386,6 @@ body {
           padding-left: 5px;
         }
       }
-    }
-
-    .selected {
-      border: 5px solid red;
     }
 
     .description {
@@ -497,6 +500,10 @@ body {
 @media screen and (max-width: $mobile-breakpoint) {
   // Styles specific to mobile devices
 
+  .desktop-menu {
+    display: none;
+  }
+
   .hero-section {
     background: url(/images/image-hero-mobile.jpg);
     background-size: contain;
@@ -515,6 +522,7 @@ body {
       padding-right: 40px;
       background: url(/images/icon-hamburger.svg);
       background-repeat: no-repeat;
+      z-index: 2;
     }
 
     .desktop-menu {
@@ -522,36 +530,39 @@ body {
     }
 
     .mobile-container {
-      display: flex;
+      display: none;
+      // display: flex;
       justify-content: center;
       align-items: center;
-      margin-top: 20px;
+
       .mobile-menu {
+        z-index: 2;
         height: 200px;
         width: 90vw;
         background-color: white;
         border-radius: 12px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
         ul {
-          display: flex;
-          flex-direction: column;
+          list-style-type: none;
 
           li {
-            padding: 10px 0px 10px 15px;
-            color: black;
-            font-size: 1.2rem;
-            margin: 10px;
-            background-color: aqua;
+            padding: 20px 0px 20px 15px;
+            font-size: 1.1rem;
+
+            a {
+              color: black;
+              font-weight: 500;
+              text-decoration: none;
+            }
           }
-        }
-
-        a {
-          color: white;
-          text-decoration: none;
-        }
-
-        a:visited {
-          color: white;
+          li:nth-child(2) {
+            border-top: 1px solid black;
+            border-bottom: 1px solid black;
+            border-color: $border;
+          }
         }
       }
     }
@@ -598,6 +609,7 @@ body {
       .book-btn {
         width: 40px;
         height: 40px;
+        text-indent: -9999px;
       }
     }
   }
@@ -745,5 +757,11 @@ body {
     top: 25%;
     width: 90vw;
     left: 5%;
+  }
+}
+
+@media only screen and (min-width: $mobile-breakpoint) and (max-width: $desktop-breakpoint) {
+  .mobile-menu {
+    display: none;
   }
 }

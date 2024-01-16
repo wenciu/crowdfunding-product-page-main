@@ -73,43 +73,41 @@ bookBtn.addEventListener("click", () => {
 //------ RADIO BUTTONS-HIDDEN DIVS FUNCTIONALITY ------//
 
 // HIDDEN DIVS
-const hiddenDivs = document.querySelectorAll(".bottom-hidden");
+// const hiddenDivs = document.querySelectorAll(".bottom-hidden");
 // CARDS CONTAINERS
 const cards = document.querySelectorAll(".card");
-let currentSelectedCard = null;
+
+function toggleBorderStyle(selectedCard) {
+  cards.forEach(function (activeCard) {
+    if (activeCard === selectedCard) {
+      activeCard.classList.toggle("selected");
+      console.log("Class added to", activeCard);
+    } else {
+      activeCard.classList.remove("selected");
+    }
+  });
+}
 
 cards.forEach(function (card) {
-  const radioBtns = card.querySelectorAll('input[name="radio"]');
+  const radioBtn = card.querySelector('input[name="radio"]');
+  const targetHiddenDivId = radioBtn.getAttribute("data-target");
+  const hiddenDiv = document.getElementById(targetHiddenDivId);
 
-  // Add click event listeners to all radio buttons
-  radioBtns.forEach(function (radioBtn) {
-    radioBtn.addEventListener("click", function () {
-      // Get the target div ID from the data-target attribute
-      const targetDivId = this.getAttribute("data-target");
-
-      // Card container of the selected radio button
-      const selectedCard = radioBtn.closest(".card");
-      // Function to toggle border style
-
-      function toggleBorderStyle() {
-        if (currentSelectedCard) {
-          currentSelectedCard.style.border = "none"; // Toggle back to original border style
-        }
-        selectedCard.style.border = "2px solid hsl(0, 0%, 48%)"; // Set the new border style
-        currentSelectedCard = selectedCard; // Update the current selected card
-      }
-      // Hide divs with if IDs do not match
-      hiddenDivs.forEach(function (div) {
-        div.style.display = "none";
-      });
-
-      // Show the target div
-      const targetDiv = document.getElementById(targetDivId);
-      if (targetDiv) {
-        targetDiv.style.display = "flex";
-        toggleBorderStyle();
+  radioBtn.addEventListener("change", function () {
+    // Hide all hidden divs
+    cards.forEach(function (div) {
+      const hiddenDiv = div.querySelector(".bottom-hidden");
+      if (hiddenDiv) {
+        hiddenDiv.style.display = "none";
       }
     });
+    // Show the selected hidden div
+    if (hiddenDiv) {
+      hiddenDiv.style.display = "flex";
+    }
+
+    // Toggle border style based on radio button selection
+    toggleBorderStyle(card);
   });
 });
 
@@ -239,4 +237,19 @@ continueBtn.forEach(function (btn) {
   });
 });
 
-//---------------------------------------//
+//------ OPEN MOBILE MENU ------//
+
+const mobileMenu = document.querySelector(".mobile-container");
+const mobileMenuBtn = document.querySelector(".menu-btn");
+
+mobileMenuBtn.addEventListener("click", function () {
+  if (mobileMenu.style.display === "none") {
+    mobileMenu.style.display = "flex";
+    overlay.style.display = "block";
+    document.body.style.overflow = "hidden"; // Disable scrolling on the body when the menu is open
+  } else {
+    mobileMenu.style.display = "none";
+    overlay.style.display = "none";
+    document.body.style.overflow = "auto"; // Enable scrolling on the body when the menu is closed
+  }
+});
