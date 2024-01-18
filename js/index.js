@@ -33,6 +33,7 @@ window.onload = function () {
   modal.style.display = "none";
   overlay.style.display = "none";
   successModal.style.display = "none";
+  bookBtn.innerHTML = "Bookmark";
 };
 
 //------ BOOKMARK BUTTON FUNCTIONALITY ------//
@@ -52,36 +53,15 @@ bookBtn.addEventListener("click", () => {
   }
 });
 
-//------ PROGRESS BAR FUNCTIONALITY ------//
-// function updateProgressBar() {
-//   var inputValue = document.getElementById('inputValue').value;
-
-//   // Convert the input to a number
-//   var numericValue = parseFloat(inputValue);
-
-//   // Ensure the input is within the valid range (0-100)
-//   numericValue = Math.min(100, Math.max(0, numericValue));
-
-//   // Update the progress bar width and text
-//   var progressBar = document.getElementById('progress-bar');
-//   var progressText = document.getElementById('progress-text');
-
-//   progressBar.style.width = numericValue + '%';
-//   progressText.innerText = numericValue + '%';
-// }
-
 //------ RADIO BUTTONS-HIDDEN DIVS FUNCTIONALITY ------//
 
-// HIDDEN DIVS
-// const hiddenDivs = document.querySelectorAll(".bottom-hidden");
 // CARDS CONTAINERS
 const cards = document.querySelectorAll(".card");
 
 function toggleBorderStyle(selectedCard) {
   cards.forEach(function (activeCard) {
     if (activeCard === selectedCard) {
-      activeCard.classList.toggle("selected");
-      console.log("Class added to", activeCard);
+      activeCard.classList.add("selected");
     } else {
       activeCard.classList.remove("selected");
     }
@@ -89,25 +69,32 @@ function toggleBorderStyle(selectedCard) {
 }
 
 cards.forEach(function (card) {
-  const radioBtn = card.querySelector('input[name="radio"]');
-  const targetHiddenDivId = radioBtn.getAttribute("data-target");
-  const hiddenDiv = document.getElementById(targetHiddenDivId);
+  // Update to listen for clicks on the parent card
+  card.addEventListener("click", function () {
+    // Find the radio button inside the clicked card
+    const radioBtn = card.querySelector('input[name="radio"]');
+    if (radioBtn) {
+      // Trigger a click on the radio button
+      radioBtn.click();
 
-  radioBtn.addEventListener("change", function () {
-    // Hide all hidden divs
-    cards.forEach(function (div) {
-      const hiddenDiv = div.querySelector(".bottom-hidden");
+      // Hide all hidden divs
+      cards.forEach(function (div) {
+        const hiddenDiv = div.querySelector(".bottom-hidden");
+        if (hiddenDiv) {
+          hiddenDiv.style.display = "none";
+        }
+      });
+
+      // Show the selected hidden div
+      const targetHiddenDivId = radioBtn.getAttribute("data-target");
+      const hiddenDiv = document.getElementById(targetHiddenDivId);
       if (hiddenDiv) {
-        hiddenDiv.style.display = "none";
+        hiddenDiv.style.display = "flex";
       }
-    });
-    // Show the selected hidden div
-    if (hiddenDiv) {
-      hiddenDiv.style.display = "flex";
-    }
 
-    // Toggle border style based on radio button selection
-    toggleBorderStyle(card);
+      // Toggle border style based on radio button selection
+      toggleBorderStyle(card);
+    }
   });
 });
 
@@ -126,22 +113,6 @@ function openModal() {
   }, 50);
 }
 
-// backBtn.addEventListener("click", () => {
-//   modal.style.display = "block";
-//   overlay.style.display = "block";
-//   setTimeout(function () {
-//     overlay.style.opacity = "1";
-//     modal.style.opacity = "1";
-//   }, 50);
-// });
-
-// rewardBtn.forEach(function (btn) {
-//   btn.addEventListener("click", function () {
-//     modal.style.display = "block";
-//     overlay.style.display = "block";
-//   });
-// });
-
 /// EVENT LISTENERS
 closeBtn.addEventListener("click", () => {
   modal.style.display = "none";
@@ -156,7 +127,6 @@ gotItBtn.addEventListener("click", () => {
   successModal.style.display = "none";
   overlay.style.display = "none";
   setTimeout(function () {
-    // successModal.style.opacity = "0";
     overlay.style.opacity = "0";
   }, 50);
 });
