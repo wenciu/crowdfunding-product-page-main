@@ -113,21 +113,34 @@ cards.forEach(function (card) {
 
 //------ OPEN 'BACK THIS PROJECT' MODAL FUNCTIONALITY ------//
 
-backBtn.addEventListener("click", () => {
+backBtn.addEventListener("click", () => openModal());
+
+rewardBtn.forEach((btn) => btn.addEventListener("click", () => openModal()));
+
+function openModal() {
   modal.style.display = "block";
   overlay.style.display = "block";
   setTimeout(function () {
     overlay.style.opacity = "1";
     modal.style.opacity = "1";
   }, 50);
-});
+}
 
-rewardBtn.forEach(function (btn) {
-  btn.addEventListener("click", function () {
-    modal.style.display = "block";
-    overlay.style.display = "block";
-  });
-});
+// backBtn.addEventListener("click", () => {
+//   modal.style.display = "block";
+//   overlay.style.display = "block";
+//   setTimeout(function () {
+//     overlay.style.opacity = "1";
+//     modal.style.opacity = "1";
+//   }, 50);
+// });
+
+// rewardBtn.forEach(function (btn) {
+//   btn.addEventListener("click", function () {
+//     modal.style.display = "block";
+//     overlay.style.display = "block";
+//   });
+// });
 
 /// EVENT LISTENERS
 closeBtn.addEventListener("click", () => {
@@ -143,7 +156,7 @@ gotItBtn.addEventListener("click", () => {
   successModal.style.display = "none";
   overlay.style.display = "none";
   setTimeout(function () {
-    successModal.style.opacity = "0";
+    // successModal.style.opacity = "0";
     overlay.style.opacity = "0";
   }, 50);
 });
@@ -162,8 +175,8 @@ const itemsLeftElement22 = document.querySelector(".left-2-2");
 // Event listener to add input value to Total Sum
 
 // Initial value - total sum
-let totalSum = 89.914;
-totalSumElement.textContent = totalSum;
+let totalSum = 89914;
+totalSumElement.textContent = totalSum.toLocaleString("en-US");
 
 // Initial value = left items
 let itemsLeft1 = 101;
@@ -197,7 +210,7 @@ continueBtn.forEach(function (btn) {
     totalSum += value1 + value2;
 
     // Update the existing value display
-    totalSumElement.textContent = totalSum;
+    totalSumElement.textContent = totalSum.toLocaleString("en-US");
 
     // Clear the input fields once value added
     inputField1.value = "";
