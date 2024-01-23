@@ -30,10 +30,27 @@ const closeBtn = document.querySelector(".close-btn");
 // HIDE DONATE MODAL CONTAINER ON PAGE LOAD
 
 window.onload = function () {
-  modal.style.display = "none";
-  overlay.style.display = "none";
-  successModal.style.display = "none";
-  bookBtn.innerHTML = "Bookmark";
+  const windowWidth =
+    window.innerWidth ||
+    document.documentElement.clientWidth ||
+    document.body.clientWidth;
+
+  if (windowWidth <= 375) {
+    bookBtn.innerHTML = "";
+    modal.style.display = "none";
+    overlay.style.display = "none";
+    successModal.style.display = "none";
+  } else {
+    bookBtn.innerHTML = "Bookmark";
+    modal.style.display = "none";
+    overlay.style.display = "none";
+    successModal.style.display = "none";
+  }
+
+  // modal.style.display = "none";
+  // overlay.style.display = "none";
+  // successModal.style.display = "none";
+  // bookBtn.innerHTML = "Bookmark";
 };
 
 //------ BOOKMARK BUTTON FUNCTIONALITY ------//
